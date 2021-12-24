@@ -29,7 +29,9 @@ export default {
 
             if(user){
                 if(password == user.password){
-                    return {id: user.id, name: user.name, lastname: user.lastname, email:user.email, address: user.address, age: user.age, mobile: user.email, token: generateToken(user)}
+                    const sendUser = {id: user.id, name: user.name, lastname: user.lastname, email:user.email, address: user.address, age: user.age, mobile: user.email, token: generateToken(user)} 
+                    console.log(sendUser)
+                    return sendUser;
                 }
             }
         }
