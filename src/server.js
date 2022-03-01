@@ -29,12 +29,27 @@
 import express from "express";
 import "./database/database.js"
 import cors from "cors"
+import adminRouter from './routes/adminRouter.js'
+import storeRouter from './routes/bussinessRouter.js'
+
+import morgan from "morgan";
+
 const app = express();
 app.set('port', 5200);
 
 app.use(cors())
+
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
+
+app.get("/", (req, res) => {
+    res.send(" Server is ready")
+})
+
+app.use('/api/v1/admins', adminRouter)
+app.use('/api/v1/stores', storeRouter)
+
 
 app.listen(app.get("port"), () => {
     console.log('server is ready')
