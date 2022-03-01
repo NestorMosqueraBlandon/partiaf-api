@@ -35,7 +35,7 @@ import storeRouter from './routes/bussinessRouter.js'
 import morgan from "morgan";
 
 const app = express();
-app.set('port', 5200);
+app.set("port", process.env.PORT || 4200);
 
 app.use(cors())
 
