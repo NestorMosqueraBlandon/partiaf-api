@@ -108,3 +108,23 @@ export const selectStore = async (req, res) => {
         })
     }
 }
+
+export const deleteCover = async (req, res) => {
+
+    console.log(req.query)
+
+    const admin = await Admin.findOne({email:req.query.email})
+
+    const storeId = admin.stores.findIndex((s) => s._id == req.query.storeId)
+    
+    const coverId = admin.stores[storeId].covers.findIndex((s) => s._id == req.params.id);
+
+    const store = admin.stores[storeId].covers.splice(coverId, 1);
+
+    await admin.save();
+
+    res.json({
+        message: 'Product were deleted successfully'
+    });
+}
+
