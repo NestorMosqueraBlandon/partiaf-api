@@ -38,6 +38,7 @@ export const findOneAdmin = async (req, red) => {
 
 export const signin = async (req, res) => {
   const admin = await Admin.findOne({ email: req.body.email });
+  console.log(admin);
   if (admin) {
     if (req.body.password == admin.password) {
       res.send({
