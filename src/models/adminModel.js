@@ -20,6 +20,7 @@ const adminSchema = new mongoose.Schema(
         mobile: { type: Number },
         employes: { type: Number },
         address: { type: String },
+        totalLimit: { type: Number },
         covers: [{
           name: {type: String},
           type: {type: String},
