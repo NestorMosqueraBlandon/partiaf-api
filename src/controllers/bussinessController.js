@@ -128,3 +128,33 @@ export const deleteCover = async (req, res) => {
     });
 }
 
+
+export const updateCover = async (req, res) => {
+    console.log("entro")
+    console.log(req.body)
+
+    const admin = await Admin.findOne({email:req.body.email})
+
+    
+    const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
+    
+    const coverId = admin.stores[storeId].covers.findIndex((s) => s._id == req.params.id);
+
+    admin.stores[storeId].covers[coverId] = {
+        
+            name: req.body.name,
+            type: req.body.type,
+            price : req.body.price,
+            date : req.body.date,
+            totalLimit: req.body.totalLimit,
+            hour: req.body.hour,
+            description: req.body.description,
+        
+    };
+
+    await admin.save();
+
+    res.json({
+        message: 'Product were deleted successfully'
+    });
+}
