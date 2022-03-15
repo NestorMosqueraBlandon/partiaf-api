@@ -19,6 +19,18 @@ export const createStore = async(req, res) => {
         })
 
         await admin.save()
+
+        // const store = {
+        //     name: admin.stores[0].name,
+        //     type: admin.stores[0].type,
+        //     price : admin.stores[0].price,
+        //     date : admin.stores[0].date,
+        //     totalLimit: admin.stores[0].totalLimit,
+        //     hour: admin.stores[0].hour,
+        //     description: admin.stores[0].description,
+        // };
+
+        res.send({store: admin.stores[0]})
     }
 }
 
