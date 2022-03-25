@@ -99,9 +99,10 @@ export const allStoresApp = async (req, res) => {
         return admin.stores;
     })
 
-    res.json({
-        stores
-    })
+    console.log(stores)
+    res.send(
+        ...stores
+    )
 }
 
 export const selectStore = async (req, res) => {
