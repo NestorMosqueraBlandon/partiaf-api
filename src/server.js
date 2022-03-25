@@ -31,6 +31,8 @@ import "./database/database.js"
 import cors from "cors"
 import adminRouter from './routes/adminRouter.js'
 import storeRouter from './routes/bussinessRouter.js'
+import bookingRouter from './routes/bookingRouter.js'
+
 
 import morgan from "morgan";
 
@@ -49,6 +51,7 @@ app.get("/", (req, res) => {
 
 app.use('/api/v1/admins', adminRouter)
 app.use('/api/v1/stores', storeRouter)
+app.use('/api/v1/bookings', bookingRouter)
 
 
 app.listen(app.get("port"), () => {

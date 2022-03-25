@@ -30,6 +30,14 @@ const adminSchema = new mongoose.Schema(
           hour: {type: String},
           description: {type: String},
 
+        }],
+        bookings: [{
+          info: {type: String},
+          cupo: {type: String},
+          date: {type: String},
+          hour: {type: String},
+          description: {type: String},
+          state: {type: Boolean},
         }]
       }
     ]

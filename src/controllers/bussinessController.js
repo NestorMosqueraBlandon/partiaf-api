@@ -92,6 +92,17 @@ export const allStores = async(req, res) => {
     });
 }
 
+export const allStoresApp = async (req, res) => {
+    const admins = await Admin.find();
+
+    const stores = admins.map((admin) => {
+        return admin.stores;
+    })
+
+    res.json({
+        stores
+    })
+}
 
 export const selectStore = async (req, res) => {
     console.log(req.body);
@@ -146,14 +157,12 @@ export const updateCover = async (req, res) => {
     console.log(req.body)
 
     const admin = await Admin.findOne({email:req.body.email})
-
     
     const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
     
     const coverId = admin.stores[storeId].covers.findIndex((s) => s._id == req.params.id);
 
     admin.stores[storeId].covers[coverId] = {
-        
             name: req.body.name,
             type: req.body.type,
             price : req.body.price,
@@ -161,7 +170,6 @@ export const updateCover = async (req, res) => {
             totalLimit: req.body.totalLimit,
             hour: req.body.hour,
             description: req.body.description,
-        
     };
 
     await admin.save();
