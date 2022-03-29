@@ -1,39 +1,37 @@
+import Admin from "../models/adminModel.js";
 import Menu from "../models/menuModel.js";
 
 export const create = async (req, res) => {
     
-    const menu = new Menu({
-      name: req.body.name,
-      lastname: req.body.lastname,
-      identification: req.body.identification,
-      email: req.body.email,
-      password: req.body.password,
-      age: req.body.age,
-      mobile: req.body.mobile,
-      address: req.body.address,
-    });
-    const createdAdmin = await admin.save();
-  
-    res.send({
-      _id: createdAdmin._id,
-      name: createdAdmin.name,
-      lastname: createdAdmin.lastname,
-      password: createdAdmin.password,
-      identification: createdAdmin.identification,
-      email: createdAdmin.email,
-      age: createdAdmin.age,
-      mobile: createdAdmin.mobile,
-      address: createdAdmin.address,
-      token: generateToken(admin),
-    });
-  };
+    const {title, email, storeId} = req.body.props;
+
+    console.log(storeId)
+    const admin = await Admin.findOne({email});
+    const id = admin.stores.findIndex((s) => s._id == storeId);
+    
+    if(admin && id){
+        admin.stores[id].menus.unshift({
+            title,
+        });
+    }
+
+    await admin.save();
+    res.status(201).json();
+};
   
 
 export const getAll = async(req, res) => {
-    const menus = await Menu.find({});
+    const {email, storeId} = req.query;
+
+    const admin = await Admin.findOne({email});
+
+    const id = admin.stores.findIndex((s) => s._id == storeId);
+
+    const menus = await admin.stores[id].menus;
+
     console.log(menus)
     if(menus){
-        res.send(menus);
+        res.status(200).json(menus);
     }
 }
 

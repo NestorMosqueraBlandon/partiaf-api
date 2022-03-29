@@ -38,6 +38,16 @@ const adminSchema = new mongoose.Schema(
           hour: {type: String},
           description: {type: String},
           state: {type: Boolean},
+        }],
+        menus: [{
+          title: { type: String },
+          items: [
+              {
+                  name: String,
+                  price: String,
+                  image: String
+              }
+          ],
         }]
       }
     ]
