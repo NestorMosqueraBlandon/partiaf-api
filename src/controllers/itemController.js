@@ -48,7 +48,7 @@ export const getAll = async(req, res) => {
 }
 
 
-export const deleteMenu = async (req, res) => {
+export const deleteItem = async (req, res) => {
 
 
     console.log(req.query)
