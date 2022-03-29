@@ -95,13 +95,17 @@ export const allStores = async(req, res) => {
 export const allStoresApp = async (req, res) => {
     const admins = await Admin.find();
 
-    const stores = admins.map((admin) => {
-        return admin.stores;
-    })
 
-    console.log(stores)
+    let stores = [];
+
+    // console.log(admins[0].stores)
+    for(let i= 0; i < admins.length; i++){
+        stores = stores.concat(admins[i].stores)
+    }
+
+    // console.log(stores)
     res.send(
-        ...stores
+        stores
     )
 }
 
