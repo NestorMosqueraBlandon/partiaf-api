@@ -3,7 +3,7 @@ import Admin from "../models/adminModel.js";
 export const createBooking = async(req, res) => {
     const { email, storeId } = req.body;
 
-    const admin = await Admin.findOne(email)
+    const admin = await Admin.findOne({email})
     const id = admin.stores.findIndex((s) => s._id == storeId)
     const store = admin.stores[id];
 
