@@ -35,7 +35,10 @@ export const getAll = async(req, res) => {
 
     const admin = await Admin.findOne({email});
 
-    const id = admin.stores.findIndex((s) => s._id == storeId);
+    if(admin)
+    {
+        const id = admin.stores.findIndex((s) => s._id == storeId);
+    }
 
     const menus = await admin.stores[id].menus;
 
