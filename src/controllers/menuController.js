@@ -16,7 +16,6 @@ export const create = async (req, res) => {
             console.log(admin.stores[id])
             admin.stores[id].menus.unshift({
                 title: newTitle,
-              
             });
         }
     
