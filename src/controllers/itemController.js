@@ -63,7 +63,7 @@ export const deleteItem = async (req, res) => {
     const idMenu = admin.stores[id].menus.findIndex((m) => m._id == menuId);
 
     console.log(idMenu)
-    const idItem = admin.stores[id].menus[idMenu].itmes.findIndex((i) => i._id == req.params.id);
+    const idItem = admin.stores[id].menus[idMenu].items.findIndex((i) => i._id == req.params.id);
 
     const item = admin.stores[id].menus[idMenu].items.splice(idItem, 1);
 
