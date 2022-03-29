@@ -1,28 +1,30 @@
 import Admin from "../models/adminModel.js";
 
 export const createBooking = async(req, res) => {
-    console.log(req.body)
-    const admin = await Admin.findOne({email:req.body.email})
+    const { email, storeId } = req.body;
 
-    const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
+    const admin = await Admin.findOne(email)
+    const id = admin.stores.findIndex((s) => s._id == storeId)
+    const store = admin.stores[id];
 
-    const store = admin.stores[storeId];
-    
+    try{
 
-    if(admin)
-    {
-        admin.stores[storeId].bookings.unshift({
-            info: req.body.info,
-            cupo: req.body.cupo,
-            date : req.body.date,
-            hour : req.body.hour,
-            description: req.body.description,
-            state: true,
-        })
-
+        if(admin)
+        {
+            admin.stores[id].bookings.unshift({
+                info: req.body.info,
+                cupo: req.body.cupo,
+                date : req.body.date,
+                hour : req.body.hour,
+                description: req.body.description,
+                state: true,
+            })
+        }
         await admin.save()
+        res.status(201).json(newStore)
 
-        res.send(200)
+    }catch(err){
+        res.status(404).json({message: err.message})
     }
 }
 
