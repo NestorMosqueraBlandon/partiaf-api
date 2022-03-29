@@ -11,7 +11,7 @@ import menuRouter from '../routes/menuRouter.js'
 const app = express();
 
 // Setting
-app.set("port", 4200);
+app.set("port",  process.env.PORT || 4200);
 
 // middlewares
 app.use(express.json({limit: "30mb", extended:true}));
