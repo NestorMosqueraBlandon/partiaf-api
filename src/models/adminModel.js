@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const adminSchema = new mongoose.Schema(
   {
     name: { type: String },
-    lastname: {type: String},
-    identification: { type: Number }, 
+    lastname: { type: String },
+    identification: { type: Number },
     email: { type: String },
     password: { type: String },
     age: { type: Number },
@@ -21,45 +21,47 @@ const adminSchema = new mongoose.Schema(
         employes: { type: Number },
         address: { type: String },
         totalLimit: { type: Number },
-        covers: [{
-          name: {type: String},
-          type: {type: String},
-          price: {type: Number},
-          date: {type: String},
-          totalLimit: {type: String},
-          hour: {type: String},
-          description: {type: String},
-
-        }],
-        bookings: [{
-          info: {type: String},
-          cupo: {type: String},
-          date: {type: String},
-          hour: {type: String},
-          description: {type: String},
-          state: {type: Boolean},
-        }],
-        menus: [{
-          title: { type: String },
-          items: [
+        covers: [
+          {
+            name: { type: String },
+            type: { type: String },
+            price: { type: Number },
+            date: { type: String },
+            totalLimit: { type: String },
+            hour: { type: String },
+            description: { type: String },
+          },
+        ],
+        bookings: [
+          {
+            info: { type: String },
+            cupo: { type: String },
+            date: { type: String },
+            hour: { type: String },
+            description: { type: String },
+            state: { type: Boolean },
+          },
+        ],
+        menus: [
+          {
+            title: { type: String },
+            items: [
               {
-                  name: String,
-                  price: String,
-                  image: String
-              }
-          ],
-        }]
-      }
-    ]
+                name: {type: String},
+                price: {type: String},
+                image: {type: String},
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-const Admin = mongoose.model(
-  'Admin',
-  adminSchema
-);
+const Admin = mongoose.model("Admin", adminSchema);
 
 export default Admin;

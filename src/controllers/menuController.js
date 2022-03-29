@@ -1,22 +1,33 @@
+import { doTypesOverlap } from "graphql";
 import Admin from "../models/adminModel.js";
 import Menu from "../models/menuModel.js";
 
 export const create = async (req, res) => {
     
+
     const {title, email, storeId} = req.body.props;
 
-    console.log(storeId)
+    const newTitle = title;
     const admin = await Admin.findOne({email});
     const id = admin.stores.findIndex((s) => s._id == storeId);
     
-    if(admin && id){
-        admin.stores[id].menus.unshift({
-            title,
-        });
+    try{
+        if(admin){
+            console.log(admin.stores[id])
+            admin.stores[id].menus.unshift({
+                title: newTitle,
+              
+            });
+        }
+    
+        await admin.save();
+        res.status(201).json(admin);
+
+    }catch(err){
+        res.status(404).json({message: err.message})
+
     }
 
-    await admin.save();
-    res.status(201).json();
 };
   
 
