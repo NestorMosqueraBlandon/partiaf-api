@@ -59,7 +59,7 @@ export const deleteItem = async (req, res) => {
 
     const id = admin.stores.findIndex((s) => s._id == storeId)
     
-    const idMenu = admin.stores[id].menus.findIndex((m) => m._id == req.params.id);
+    const idMenu = admin.stores[id].menus.findIndex((m) => m._id == menuId);
 
     const idItem = admin.stores[id].menus[idMenu].findIndex((i) => i._id == req.params.id);
 
