@@ -12,7 +12,7 @@ export const create = async (req, res) => {
     
     const admin = await Admin.findOne({email});
     const id = admin.stores.findIndex((s) => s._id == storeId);
-    const idMenu = admin.stores[i].menus.findIndex((m) => m._id == menuId);
+    const idMenu = admin.stores[id].menus.findIndex((m) => m._id == menuId);
 
     try{
         if(admin){
