@@ -55,9 +55,9 @@ export const deleteMenu = async (req, res) => {
 
     const id = admin.stores.findIndex((s) => s._id == storeId)
     
-    const idMenu = admin.stores[storeId].menus.findIndex((m) => m._id == req.params.id);
+    const idMenu = admin.stores[id].menus.findIndex((m) => m._id == req.params.id);
 
-    const menu = admin.stores[storeId].menus.splice(idMenu, 1);
+    const menu = admin.stores[id].menus.splice(idMenu, 1);
 
     await admin.save();
 
