@@ -5,7 +5,7 @@ import Menu from "../models/menuModel.js";
 export const create = async (req, res) => {
     
     console.log(req.body)
-    const {title, email, storeId} = req.body.props;
+    const {title, email, storeId} = req.body;
 
     const newTitle = title;
     const admin = await Admin.findOne({email});
