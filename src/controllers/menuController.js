@@ -45,24 +45,26 @@ export const getAll = async(req, res) => {
 }
 
 
-// export const delete = async (req, res) => {
+export const deleteMenu = async (req, res) => {
 
-//     console.log(req.query)
+    console.log(req.query)
 
-//     const admin = await Admin.findOne({email:req.query.email})
+    const {email, storeId} = req.query;
 
-//     const storeId = admin.stores.findIndex((s) => s._id == req.query.storeId)
+    const admin = await Admin.findOne({email})
+
+    const id = admin.stores.findIndex((s) => s._id == storeId)
     
-//     const coverId = admin.stores[storeId].bookings.findIndex((s) => s._id == req.params.id);
+    const idMenu = admin.stores[storeId].menus.findIndex((m) => m._id == req.params.id);
 
-//     const store = admin.stores[storeId].bookings.splice(coverId, 1);
+    const menu = admin.stores[storeId].menus.splice(idMenu, 1);
 
-//     await admin.save();
+    await admin.save();
 
-//     res.json({
-//         message: 'Booking were deleted successfully'
-//     });
-// }
+    res.json({
+        message: 'Menu were deleted successfully'
+    });
+}
 
 
 export const updateBooking = async (req, res) => {

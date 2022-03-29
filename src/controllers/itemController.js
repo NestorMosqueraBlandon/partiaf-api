@@ -1,4 +1,3 @@
-import { doTypesOverlap } from "graphql";
 import Admin from "../models/adminModel.js";
 import Menu from "../models/menuModel.js";
 
@@ -51,7 +50,6 @@ export const getAll = async(req, res) => {
 
 // export const delete = async (req, res) => {
 
-//     console.log(req.query)
 
 //     const admin = await Admin.findOne({email:req.query.email})
 
