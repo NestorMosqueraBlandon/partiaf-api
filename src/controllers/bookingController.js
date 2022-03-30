@@ -21,7 +21,7 @@ export const createBooking = async(req, res) => {
             })
         }
         await admin.save()
-        res.status(201).json({newStore})
+        res.status(201).json()
 
     }catch(err){
         res.status(404).json({message: err.message})
