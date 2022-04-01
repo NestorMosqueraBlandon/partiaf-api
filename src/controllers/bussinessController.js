@@ -138,6 +138,7 @@ export const selectStore = async (req, res) => {
 }
 
 export const deleteStore = async (req, res) => {
+    console.log(req.body)
     const admin = await Admin.findOne({email:req.body.email})
 
     const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
