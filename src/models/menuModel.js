@@ -7,9 +7,10 @@ const menuSchema = new mongoose.Schema(
         {
             name: String,
             price: String,
-            image: String
+            image: String,
         }
     ],
+    image: {type: String}
   },
   {
     timestamps: true,

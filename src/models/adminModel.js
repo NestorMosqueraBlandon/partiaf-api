@@ -30,6 +30,7 @@ const adminSchema = new mongoose.Schema(
             totalLimit: { type: String },
             hour: { type: String },
             description: { type: String },
+            image: {type: String}
           },
         ],
         bookings: [

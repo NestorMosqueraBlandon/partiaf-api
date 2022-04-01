@@ -10,6 +10,8 @@ const userSchema = new mongoose.Schema(
     mobile: { type: Number },
     employes: { type: Number },
     address: { type: String },
+    image: {type: String}
+
   },
   {
     timestamps: true,
