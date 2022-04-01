@@ -144,9 +144,9 @@ export const deleteStore = async (req, res) => {
 
     const store = admin.stores[storeId];
     
-    if(store)
+    if(admin)
     {
-        if(req.body.password == store.password)
+        if(req.query.password == store.password)
         {
             admin.stores.splice(storeId, 1);
             res.send({
