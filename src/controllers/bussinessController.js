@@ -137,6 +137,35 @@ export const selectStore = async (req, res) => {
     }
 }
 
+export const deleteStore = async (req, res) => {
+    const admin = await Admin.findOne({email:req.body.email})
+
+    const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
+
+    const store = admin.stores[storeId];
+    
+    if(store)
+    {
+        if(req.body.password == store.password)
+        {
+            admin.stores.splice(storeId, 1);
+            res.send({
+                store
+            });
+            return;
+        }else{
+            res.status(500).json({
+                message: 'Contrasena incorrecta'
+            })
+        }
+    }else{
+        res.status(500).json({
+            message: 'Admin dont exits'
+        })
+    }
+}
+
+
 export const deleteCover = async (req, res) => {
 
     console.log(req.query)
