@@ -12,7 +12,7 @@ import itemRouter from '../routes/itemRouter.js'
 const app = express();
 
 // Setting
-app.set("port",  process.env.PORT || 4200);
+app.set("port",  process.env.PORT || 4300);
 
 // middlewares
 app.use(express.json());

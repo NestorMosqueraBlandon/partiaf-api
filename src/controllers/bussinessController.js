@@ -140,19 +140,24 @@ export const selectStore = async (req, res) => {
 export const deleteStore = async (req, res) => {
     const admin = await Admin.findOne({email:req.query.email})
 
+    console.log(req.query)
     const storeId = admin.stores.findIndex((s) => s._id == req.query.storeId)
 
     const store = admin.stores[storeId];
     
+    console.log(store)
     if(admin)
     {
         if(req.query.password == store.password)
         {
             admin.stores.splice(storeId, 1);
-            res.send({
-                store
+           
+
+            await admin.save();
+
+            res.json({
+                message: 'Store were deleted successfully'
             });
-            return;
         }else{
             res.status(500).json({
                 message: 'Contrasena incorrecta'
