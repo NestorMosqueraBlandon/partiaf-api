@@ -52,6 +52,7 @@ export const signin = async (req, res) => {
         age: admin.age,
         mobile: admin.mobile,
         address: admin.address,
+        image: admin.image,
         stores: admin.stores,
         token: generateToken(admin),
       });
