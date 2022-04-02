@@ -10,6 +10,7 @@ const adminSchema = new mongoose.Schema(
     age: { type: Number },
     mobile: { type: Number },
     address: { type: String },
+    image: { type: String },
     stores: [
       {
         name: { type: String },
