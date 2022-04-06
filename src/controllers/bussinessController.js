@@ -85,11 +85,15 @@ export const allStores = async(req, res) => {
     const admin = await Admin.findOne({email:req.query.email})
 
     console.log(admin)
-    const stores = admin.stores
-    console.log(stores)
-    res.json({
-        stores
-    });
+
+    if(admin?.stores){
+        const stores = admin.stores
+        res.status(200).json({
+            stores
+        });
+    }
+    res.send([])
+
 }
 
 export const allStoresApp = async (req, res) => {
