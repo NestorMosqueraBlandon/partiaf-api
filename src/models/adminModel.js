@@ -51,6 +51,7 @@ const adminSchema = new mongoose.Schema(
               {
                 name: {type: String},
                 price: {type: String},
+                amount: {type: Number},
                 image: {type: String},
               },
             ],
