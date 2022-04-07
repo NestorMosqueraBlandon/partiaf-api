@@ -48,6 +48,7 @@ export const allBookings = async(req, res) => {
 
 export const deleteBooking = async (req, res) => {
 
+    console.log("Entro")
     console.log(req.query)
 
     const admin = await Admin.findOne({email:req.query.email})
