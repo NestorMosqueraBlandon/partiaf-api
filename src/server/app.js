@@ -8,6 +8,7 @@ import bookingRouter from '../routes/bookingRouter.js'
 import buyRouter from '../routes/buyRouter.js'
 import menuRouter from '../routes/menuRouter.js'
 import itemRouter from '../routes/itemRouter.js'
+import chairRouter from '../routes/chairRouter.js'
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use('/api/v1/menu', menuRouter)
 app.use('/api/v1/item', itemRouter)
 app.use('/api/v1/stores', storeRouter)
 app.use('/api/v1/bookings', bookingRouter)
+app.use('/api/v1/chairs', chairRouter)
 
 export default app;
 

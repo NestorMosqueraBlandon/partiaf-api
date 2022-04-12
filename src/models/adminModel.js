@@ -57,6 +57,16 @@ const adminSchema = new mongoose.Schema(
             ],
           },
         ],
+        chairs: [
+          {
+            type: { type: String },
+            limit: { type: Number },
+            price: { type: Number },
+            amount: { type: Number },
+            reserved: { type: Number },
+
+          }
+        ]
       },
     ],
   },
