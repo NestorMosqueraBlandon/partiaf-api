@@ -3,17 +3,17 @@ import Admin from "../models/adminModel.js";
 export const create = async (req, res) => {
     
     console.log(req.body)
-    const {title, email, storeId} = req.body;
+    const {email, storeId, type, limit, price, amount} = req.body;
 
-    const newTitle = title;
     const admin = await Admin.findOne({email});
     const id = admin.stores.findIndex((s) => s._id == storeId);
     
+    const reserved = 0;
     try{
         if(admin){
             console.log(admin.stores[id])
-            admin.stores[id].menus.unshift({
-                title: newTitle,
+            admin.stores[id].chairs.unshift({
+                type, limit, price, amount , reserved
             });
         }
     
@@ -34,11 +34,11 @@ export const getAll = async(req, res) => {
     const admin = await Admin.findOne({email});
     const id = admin.stores.findIndex((s) => s._id == storeId);
 
-    const menus = await admin.stores[id].menus;
+    const chairs = await admin.stores[id].chairs;
 
-    console.log(menus)
-    if(menus){
-        res.status(200).json(menus);
+    console.log(chairs)
+    if(chairs){
+        res.status(200).json(chairs);
     }
 }
 
