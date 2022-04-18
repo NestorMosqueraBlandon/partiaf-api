@@ -79,7 +79,7 @@ export const deleteItem = async (req, res) => {
 }
 
 
-export const updateBooking = async (req, res) => {
+export const updateItem = async (req, res) => {
     console.log("entro")
     console.log(req.body)
 
@@ -87,20 +87,20 @@ export const updateBooking = async (req, res) => {
     
     const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
     
-    const coverId = admin.stores[storeId].bookings.findIndex((s) => s._id == req.params.id);
+    const idMenu = admin.stores[storeId].menu.findIndex((s) => s._id == req.params.id);
 
-    admin.stores[storeId].bookings[coverId] = {
-        info: req.body.info,
-        cupo: req.body.cupo,
-        date : req.body.date,
-        hour : req.body.hour,
-        description: req.body.description,
-        state: req.bodu.state,
+    const idItem = admin.stores[id].menus[idMenu].items.findIndex((i) => i._id == req.params.id);
+
+    admin.stores[storeId].menus[idMenu].items = {
+        title: req.body.title,
+        amount: req.body.amount,
+        price: req.body.price,
+        image: req.body.image,
     };
 
     await admin.save();
 
     res.json({
-        message: 'Product were deleted successfully'
+        message: 'Item were Updates successfully'
     });
 }
