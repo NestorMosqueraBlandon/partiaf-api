@@ -80,7 +80,6 @@ export const deleteItem = async (req, res) => {
 
 
 export const updateItem = async (req, res) => {
-    console.log("entro")
     console.log(req.body)
 
     const admin = await Admin.findOne({email:req.body.email})
