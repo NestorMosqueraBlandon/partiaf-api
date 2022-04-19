@@ -82,19 +82,20 @@ export const deleteItem = async (req, res) => {
 export const updateItem = async (req, res) => {
     console.log(req.body)
 
-    const admin = await Admin.findOne({email:req.body.email})
+    const admin = await Admin.findOne({email:req.body.props.email})
     
-    const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
     
-    const idMenu = admin.stores[storeId].menu.findIndex((s) => s._id == req.params.id);
+    const storeId = admin.stores.findIndex((s) => s._id == req.body.props.storeId)
 
-    const idItem = admin.stores[id].menus[idMenu].items.findIndex((i) => i._id == req.params.id);
+    const idMenu = admin.stores[storeId].menus.findIndex((s) => s._id == req.body.props.menuId);
+
+    const idItem = admin.stores[storeId].menus[idMenu].items.findIndex((i) => i._id == req.params.id);
 
     admin.stores[storeId].menus[idMenu].items[idItem] = {
-        title: req.body.title,
-        amount: req.body.amount,
-        price: req.body.price,
-        image: req.body.image,
+        name: req.body.props.name ? req.body.props.name :  admin.stores[storeId].menus[idMenu].items[idItem].name,
+        amount: req.body.props.amount? req.body.props.amount : admin.stores[storeId].menus[idMenu].items[idItem].amount,
+        price: req.body.props.price? req.body.props.price : admin.stores[storeId].menus[idMenu].items[idItem].price,
+        image: req.body.props.image? req.body.props.image :  admin.stores[storeId].menus[idMenu].items[idItem].image,
     };
 
     await admin.save();
