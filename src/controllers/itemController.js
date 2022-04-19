@@ -90,7 +90,7 @@ export const updateItem = async (req, res) => {
 
     const idItem = admin.stores[id].menus[idMenu].items.findIndex((i) => i._id == req.params.id);
 
-    admin.stores[storeId].menus[idMenu].items = {
+    admin.stores[storeId].menus[idMenu].items[idItem] = {
         title: req.body.title,
         amount: req.body.amount,
         price: req.body.price,
