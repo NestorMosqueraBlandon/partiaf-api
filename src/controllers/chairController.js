@@ -54,9 +54,9 @@ export const deleteChair = async (req, res) => {
 
     const id = admin.stores.findIndex((s) => s._id == storeId)
     
-    const idMenu = admin.stores[id].menus.findIndex((m) => m._id == req.params.id);
+    const idMenu = admin.stores[id].chairs.findIndex((m) => m._id == req.params.id);
 
-    const menu = admin.stores[id].menus.splice(idMenu, 1);
+    const menu = admin.stores[id].chairs.splice(idMenu, 1);
 
     await admin.save();
 
