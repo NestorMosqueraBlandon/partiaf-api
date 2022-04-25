@@ -70,19 +70,17 @@ export const updateChair = async (req, res) => {
     console.log("entro")
     console.log(req.body)
 
-    const admin = await Admin.findOne({email:req.body.email})
+    const admin = await Admin.findOne({email:req.body.props.email})
     
-    const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
+    const storeId = admin.stores.findIndex((s) => s._id == req.body.props.storeId)
     
     const chairId = admin.stores[storeId].chairs.findIndex((s) => s._id == req.params.id);
 
     admin.stores[storeId].chairs[chairId] = {
-        type: req.body.type,
-        price: req.body.price,
-        amount: req.body.amount,
-        limit: req.body.limit,
-        description: req.body.description,
-        state: req.bodu.state,
+        type:   req.body.props.type,
+        price:  req.body.props.price,
+        amount: req.body.props.amount,
+        limit:  req.body.props.limit,
     };
 
     await admin.save();
