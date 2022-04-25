@@ -5,6 +5,6 @@ const router = Router();
 router.post("/create", chairCtrl.create)
 router.get("/", chairCtrl.getAll)
 router.delete("/:id", chairCtrl.deleteChair)
-// router.put("/:id", buyCtrl.update)
+router.put("/:id", chairCtrl.updateChair)
 
 export default router;
