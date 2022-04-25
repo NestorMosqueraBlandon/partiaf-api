@@ -81,6 +81,7 @@ export const updateChair = async (req, res) => {
         price:  req.body.props.price,
         amount: req.body.props.amount,
         limit:  req.body.props.limit,
+        reserved: 0
     };
 
     await admin.save();
