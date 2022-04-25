@@ -66,7 +66,7 @@ export const deleteChair = async (req, res) => {
 }
 
 
-export const updateBooking = async (req, res) => {
+export const updateChair = async (req, res) => {
     console.log("entro")
     console.log(req.body)
 
@@ -74,13 +74,13 @@ export const updateBooking = async (req, res) => {
     
     const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
     
-    const coverId = admin.stores[storeId].bookings.findIndex((s) => s._id == req.params.id);
+    const chairId = admin.stores[storeId].chairs.findIndex((s) => s._id == req.params.id);
 
-    admin.stores[storeId].bookings[coverId] = {
-        info: req.body.info,
-        cupo: req.body.cupo,
-        date : req.body.date,
-        hour : req.body.hour,
+    admin.stores[storeId].chairs[chairId] = {
+        type: req.body.type,
+        price: req.body.price,
+        amount: req.body.amount,
+        limit: req.body.limit,
         description: req.body.description,
         state: req.bodu.state,
     };
