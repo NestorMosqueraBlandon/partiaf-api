@@ -47,7 +47,6 @@ export const updateStore = async (req, res) => {
       employes: req.body.employes,
       address: req.body.name,
       totalLimit: req.body.totalLimit,
-      images: req.body.images
     };
 
     await admin.save();
