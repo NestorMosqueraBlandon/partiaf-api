@@ -31,6 +31,39 @@ export const createAdmin = async (req, res) => {
   });
 };
 
+export const updateAdmin = async (req, res) => {
+  console.log(req.body)
+
+  const admin = await Admin.findOne(req.body.email);
+  
+
+    admin.name = req.body.name,
+    admin.lastname = req.body.lastname,
+    admin.identification = req.body.identification,
+    admin.email = req.body.email,
+    admin.password = req.body.password,
+    admin.age = req.body.age,
+    admin.mobile = req.body.mobile,
+    admin.address = req.body.address,
+    admin.image = req.body.image
+
+  const updatedAdmin = await admin.save();
+
+  res.send({
+    _id: updatedAdmin._id,
+    name: updatedAdmin.name,
+    lastname: updatedAdmin.lastname,
+    password: updatedAdmin.password,
+    identification: updatedAdmin.identification,
+    email: updatedAdmin.email,
+    age: updatedAdmin.age,
+    mobile: updatedAdmin.mobile,
+    address: updatedAdmin.address,
+    image: updatedAdmin.image,
+    token: generateToken(admin),
+  });
+};
+
 export const findOneAdmin = async (req, red) => {
   const admin = await Admin.findById(req.params.id);
   res.json({

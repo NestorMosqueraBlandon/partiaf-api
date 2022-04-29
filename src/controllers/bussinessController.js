@@ -33,6 +33,30 @@ export const createStore = async (req, res) => {
   }
 };
 
+export const updateStore = async (req, res) => {
+  const admin = await Admin.findOne({ email: req.body.email });
+
+  const storeId = admin.stores.findIndex((s) => s._id == req.params.id);
+  if (admin) {
+    admin.stores[storeId] = {
+      name: req.body.name,
+      type: req.body.type,
+      nit: req.body.nit,
+      email: req.body.email,
+      mobile: req.body.mobile,
+      employes: req.body.employes,
+      address: req.body.name,
+      password: req.body.password,
+      totalLimit: req.body.totalLimit,
+      images: req.body.images
+    };
+
+    await admin.save();
+
+    res.send({ store: admin.stores[storeId] });
+  }
+};
+
 export const createStoreCover = async (req, res) => {
   const admin = await Admin.findOne({ email: req.body.email });
 
