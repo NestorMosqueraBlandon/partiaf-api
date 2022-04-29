@@ -24,7 +24,7 @@ const adminSchema = new mongoose.Schema(
         totalLimit: { type: Number },
         images: [
           {
-            image: String
+            type: String
           }
         ],
         covers: [

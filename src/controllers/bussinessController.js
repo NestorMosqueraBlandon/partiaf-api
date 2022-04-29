@@ -14,6 +14,7 @@ export const createStore = async (req, res) => {
       address: req.body.name,
       password: req.body.password,
       totalLimit: req.body.totalLimit,
+      images: req.body.images
     });
 
     await admin.save();
