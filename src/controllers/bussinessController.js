@@ -46,7 +46,6 @@ export const updateStore = async (req, res) => {
       mobile: req.body.mobile,
       employes: req.body.employes,
       address: req.body.name,
-      password: req.body.password,
       totalLimit: req.body.totalLimit,
       images: req.body.images
     };
