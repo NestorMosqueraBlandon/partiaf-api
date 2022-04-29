@@ -68,28 +68,21 @@ export const deleteMenu = async (req, res) => {
 }
 
 
-export const updateBooking = async (req, res) => {
-    console.log("entro")
-    console.log(req.body)
+export const updateMenu = async (req, res) => {
 
     const admin = await Admin.findOne({email:req.body.email})
     
     const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
     
-    const coverId = admin.stores[storeId].bookings.findIndex((s) => s._id == req.params.id);
+    const menuId = admin.stores[storeId].menus.findIndex((s) => s._id == req.params.id);
 
-    admin.stores[storeId].bookings[coverId] = {
-        info: req.body.info,
-        cupo: req.body.cupo,
-        date : req.body.date,
-        hour : req.body.hour,
-        description: req.body.description,
-        state: req.bodu.state,
+    admin.stores[storeId].menus[menuId] = {
+        title: req.body.title,
     };
 
     await admin.save();
 
     res.json({
-        message: 'Product were deleted successfully'
+        message: 'Menu were deleted successfully'
     });
 }
