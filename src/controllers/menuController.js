@@ -70,14 +70,16 @@ export const deleteMenu = async (req, res) => {
 
 export const updateMenu = async (req, res) => {
 
-    const admin = await Admin.findOne({email:req.body.email})
+    console.log(req.body.props);
+
+    const admin = await Admin.findOne({email:req.body.props.email})
     
-    const storeId = admin.stores.findIndex((s) => s._id == req.body.storeId)
+    const storeId = admin.stores.findIndex((s) => s._id == req.body.props.storeId)
     
     const menuId = admin.stores[storeId].menus.findIndex((s) => s._id == req.params.id);
 
     admin.stores[storeId].menus[menuId] = {
-        title: req.body.title,
+        title: req.body.props.title,
     };
 
     await admin.save();
