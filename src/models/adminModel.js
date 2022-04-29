@@ -22,6 +22,11 @@ const adminSchema = new mongoose.Schema(
         employes: { type: Number },
         address: { type: String },
         totalLimit: { type: Number },
+        images: [
+          {
+            image: String
+          }
+        ],
         covers: [
           {
             name: { type: String },
@@ -64,7 +69,6 @@ const adminSchema = new mongoose.Schema(
             price: { type: Number },
             amount: { type: Number },
             reserved: { type: Number },
-
           }
         ]
       },
