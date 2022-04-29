@@ -3,7 +3,7 @@ import * as bussinessCtrl from '../controllers/bussinessController.js'
 const router = Router();
 
 router.post("/", bussinessCtrl.createStore)
-router.put("/:id", bussinessCtrl.updateStore)
+router.put("updateStore/:id", bussinessCtrl.updateStore)
 router.get("/list/", bussinessCtrl.allStores)
 router.get('/listall', bussinessCtrl.allStoresApp)
 router.post("/select/", bussinessCtrl.selectStore)
