@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors"
 import adminRouter from '../routes/adminRouter.js'
+import userRouter from '../routes/userRouter.js'
 import storeRouter from '../routes/bussinessRouter.js'
 import bookingRouter from '../routes/bookingRouter.js'
 import buyRouter from '../routes/buyRouter.js'
@@ -26,6 +27,8 @@ app.get("/", (req, res) => {
 })
 
 app.use('/api/v1/admins', adminRouter)
+app.use('/api/v1/users', userRouter)
+
 app.use('/api/v1/buy', buyRouter)
 app.use('/api/v1/menu', menuRouter)
 app.use('/api/v1/item', itemRouter)

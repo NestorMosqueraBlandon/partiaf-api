@@ -9,7 +9,8 @@ router.get('/listall', bussinessCtrl.allStoresApp)
 router.post("/select/", bussinessCtrl.selectStore)
 router.delete("/", bussinessCtrl.deleteStore)
 router.post("/createCover/", bussinessCtrl.createStoreCover)
-router.get("/covers/", bussinessCtrl.allCovers)
+router.get("/covers/", bussinessCtrl.allCovers);
+router.get("/store/:id", bussinessCtrl.getOne);
 router.delete("/covers/:id", bussinessCtrl.deleteCover)
 router.put("/updateCover/:id", bussinessCtrl.updateCover)
 

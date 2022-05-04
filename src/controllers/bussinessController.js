@@ -154,10 +154,44 @@ export const selectStore = async (req, res) => {
     }
   }catch(err){
       throw new Error(err);
-  }
-
-  
+  }  
 };
+
+export const getOne = async (req, res) => {
+  // console.log(req.body);
+  const admins = await Admin.find({});
+
+  const stores = [] 
+  
+  admins.filter((admin) => admin.stores.length > 0)
+  .map((admin) => {
+    const store = admin.stores;
+    stores.push(...store);
+  })
+
+  try{
+    const storeId = req.params.id;
+
+    const store = stores.filter((store) => store._id == storeId )
+  
+    
+    console.log(store)
+    if (store) {
+      
+        res.send({
+          ...store,
+        });
+    } else {
+      res.status(500).json({
+        message: "Admin dont exits",
+      });
+    }
+  }catch(err){
+      // throw new Error(err);
+      console.log(err)
+  }  
+};
+
 
 export const deleteStore = async (req, res) => {
   const admin = await Admin.findOne({ email: req.query.email });
