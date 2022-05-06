@@ -158,7 +158,7 @@ export const selectStore = async (req, res) => {
 };
 
 export const getOne = async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   const admins = await Admin.find({});
 
   const stores = [] 
@@ -192,6 +192,7 @@ export const getOne = async (req, res) => {
   }  
 };
 
+// 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
 
 export const deleteStore = async (req, res) => {
   const admin = await Admin.findOne({ email: req.query.email });

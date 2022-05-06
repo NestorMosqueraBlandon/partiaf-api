@@ -14,6 +14,7 @@ export const createUser = async (req, res) => {
     email: createdUser.email,
     username: createdUser.username,
     mobile: createdUser.mobile,
+    image: createdUser.image,
     password: createdUser.password,
     token: generateToken(user),
   });
