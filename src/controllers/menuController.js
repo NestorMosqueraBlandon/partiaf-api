@@ -80,6 +80,7 @@ export const updateMenu = async (req, res) => {
 
     admin.stores[storeId].menus[menuId] = {
         title: req.body.props.title,
+        items: admin.stores[storeId].menus[menuId].items,
     };
 
     await admin.save();
