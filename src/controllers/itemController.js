@@ -4,12 +4,13 @@ import Menu from "../models/menuModel.js";
 export const create = async (req, res) => {
     
     console.log(req.body)
-    const {name, price, amount, image, email, storeId, menuId} = req.body;
+    const {name, description, price, amount, image, email, storeId, menuId} = req.body;
 
     const newPrice = price;
     const newName = name;
     const newAmount = amount;
     const newImage = image;
+    const newDescription = description;
     
     const admin = await Admin.findOne({email});
     const id = admin.stores.findIndex((s) => s._id == storeId);
@@ -21,6 +22,7 @@ export const create = async (req, res) => {
             admin.stores[id].menus[idMenu].items.unshift({
                 name: newName,
                 price: newPrice,
+                description: newDescription,
                 image: newImage,
                 amount: newAmount
             });
