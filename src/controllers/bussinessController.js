@@ -47,6 +47,7 @@ export const updateStore = async (req, res) => {
       images: req.body.images,
       employes: req.body.employes,
       address: req.body.name,
+      menus: admin.stores[storeId].menus,
       totalLimit: req.body.totalLimit,
       password: req.body.password
     };
