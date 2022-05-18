@@ -44,6 +44,7 @@ export const updateStore = async (req, res) => {
       nit: req.body.nit,
       email: req.body.email,
       mobile: req.body.mobile,
+      images: req.body.images,
       employes: req.body.employes,
       address: req.body.name,
       totalLimit: req.body.totalLimit,
