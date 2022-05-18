@@ -95,6 +95,7 @@ export const updateItem = async (req, res) => {
 
     admin.stores[storeId].menus[idMenu].items[idItem] = {
         name: req.body.props.name ? req.body.props.name :  admin.stores[storeId].menus[idMenu].items[idItem].name,
+        description: req.body.props.description ? req.body.props.description :  admin.stores[storeId].menus[idMenu].items[idItem].description,
         amount: req.body.props.amount? req.body.props.amount : admin.stores[storeId].menus[idMenu].items[idItem].amount,
         price: req.body.props.price? req.body.props.price : admin.stores[storeId].menus[idMenu].items[idItem].price,
         image: req.body.props.image? req.body.props.image :  admin.stores[storeId].menus[idMenu].items[idItem].image,
