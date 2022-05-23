@@ -1,31 +1,29 @@
+import Admin from "../models/adminModel.js";
 import Buy from "../models/buyModel.js";
 
 export const create = async (req, res) => {
     
-    const buy = new Buy({
-      name: req.body.name,
-      lastname: req.body.lastname,
-      identification: req.body.identification,
-      email: req.body.email,
-      password: req.body.password,
-      age: req.body.age,
-      mobile: req.body.mobile,
-      address: req.body.address,
-    });
-    const createdAdmin = await admin.save();
-  
-    res.send({
-      _id: createdAdmin._id,
-      name: createdAdmin.name,
-      lastname: createdAdmin.lastname,
-      password: createdAdmin.password,
-      identification: createdAdmin.identification,
-      email: createdAdmin.email,
-      age: createdAdmin.age,
-      mobile: createdAdmin.mobile,
-      address: createdAdmin.address,
-      token: generateToken(admin),
-    });
+    console.log(req.body);
+
+    const {name, total, email, items, storeId} = req.body;
+
+    const admin = await Admin.findOne({email});
+
+    const id = admin.stores.findIndex((s) => s._id == storeId);
+
+    try{
+        if(admin){
+            admin.stores[id].buys.unshift({
+                name:name, total:total, items: items
+            })
+
+            admin.save();
+            res.status(201).json(admin);
+
+        }
+    }catch(e){
+        res.status(404).json({message: e.message})
+    }
   };
   
 

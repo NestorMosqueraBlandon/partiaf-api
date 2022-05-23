@@ -63,6 +63,17 @@ const adminSchema = new mongoose.Schema(
             ],
           },
         ],
+        buys: [
+          {
+            name: { type: String },
+            items: [{
+                amount: Number,
+                name: String,
+                price: Number
+            }],
+            total: {type: Number},
+          },
+        ],
         chairs: [
           {
             type: { type: String },
