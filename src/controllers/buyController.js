@@ -28,7 +28,14 @@ export const create = async (req, res) => {
   
 
 export const getAll = async(req, res) => {
-    const buys = await Buy.find({});
+
+    const {email, storeId} = req.query;
+
+    const admin = await Admin.findOne({email});
+
+    const id = admin.stores.findIndex((s) => s._id == storeId);
+
+    const buys = await admin.stores[id].buys;
 
     console.log(buys)
     if(buys){
