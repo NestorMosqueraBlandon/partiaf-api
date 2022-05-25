@@ -18,7 +18,7 @@ export const create = async (req, res) => {
                 peoples: peoples,
                 day: day,
                 hour: hour,
-                name:name, total:total, items: items
+                total:total, items: items
             })
 
             admin.save();
