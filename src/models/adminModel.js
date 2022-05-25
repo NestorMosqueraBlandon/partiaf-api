@@ -39,16 +39,7 @@ const adminSchema = new mongoose.Schema(
             image: {type: String}
           },
         ],
-        bookings: [
-          {
-            info: { type: String },
-            cupo: { type: String },
-            date: { type: String },
-            hour: { type: String },
-            description: { type: String },
-            state: { type: Boolean },
-          },
-        ],
+    
         menus: [
           {
             title: { type: String },
@@ -71,6 +62,15 @@ const adminSchema = new mongoose.Schema(
                 name: String,
                 price: Number
             }],
+            total: {type: Number},
+          },
+        ],
+        bookings: [
+          {
+            type: { type: String },
+            peoples: { type: Number },
+            day: { type: String },
+            hour: {type: String},
             total: {type: Number},
           },
         ],

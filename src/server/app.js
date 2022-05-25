@@ -7,6 +7,7 @@ import userRouter from '../routes/userRouter.js'
 import storeRouter from '../routes/bussinessRouter.js'
 import bookingRouter from '../routes/bookingRouter.js'
 import buyRouter from '../routes/buyRouter.js'
+import bookingsRouter from '../routes/bookingsRouter.js'
 import menuRouter from '../routes/menuRouter.js'
 import itemRouter from '../routes/itemRouter.js'
 import chairRouter from '../routes/chairRouter.js'
@@ -30,6 +31,7 @@ app.use('/api/v1/admins', adminRouter)
 app.use('/api/v1/users', userRouter)
 
 app.use('/api/v1/buy', buyRouter)
+app.use('/api/v1/booking', bookingsRouter)
 app.use('/api/v1/menu', menuRouter)
 app.use('/api/v1/item', itemRouter)
 app.use('/api/v1/stores', storeRouter)
