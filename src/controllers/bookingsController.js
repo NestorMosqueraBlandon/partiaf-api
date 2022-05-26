@@ -42,7 +42,7 @@ export const getAll = async(req, res) => {
     const bookings = await admin.stores[id].bookings;
 
     console.log(bookings)
-    if(buys){
+    if(bookings){
         res.send(bookings);
     }
 }
