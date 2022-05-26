@@ -47,7 +47,6 @@ export const getAll = async(req, res) => {
     }
 }
 
-
 export const deleteBooking = async (req, res) => {
 
     console.log(req.query)
