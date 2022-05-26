@@ -39,11 +39,11 @@ export const getAll = async(req, res) => {
 
     const id = admin.stores.findIndex((s) => s._id == storeId);
 
-    const buys = await admin.stores[id].buys;
+    const bookings = await admin.stores[id].bookings;
 
-    console.log(buys)
+    console.log(bookings)
     if(buys){
-        res.send(buys);
+        res.send(bookings);
     }
 }
 
