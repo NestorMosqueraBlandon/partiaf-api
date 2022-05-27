@@ -59,6 +59,8 @@ export const updateStore = async (req, res) => {
 };
 
 export const createStoreCover = async (req, res) => {
+
+  console.log("CREATE COVER")
   const admin = await Admin.findOne({ email: req.body.email });
 
   try {
