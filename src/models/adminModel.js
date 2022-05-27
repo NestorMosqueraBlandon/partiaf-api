@@ -67,11 +67,11 @@ const adminSchema = new mongoose.Schema(
         ],
         bookings: [
           {
-            type: { type: String, required:true},
-            peoples: { type: Number, required:true},
-            day: { type: String, required:true },
-            hour: {type: String, required:true},
-            total: {type: Number, required:true},
+            type: { type: String},
+            peoples: { type: Number},
+            day: { type: String},
+            hour: {type: String},
+            total: {type: Number},
           },
         ],
         chairs: [
