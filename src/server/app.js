@@ -11,6 +11,7 @@ import bookingsRouter from '../routes/bookingsRouter.js'
 import menuRouter from '../routes/menuRouter.js'
 import itemRouter from '../routes/itemRouter.js'
 import chairRouter from '../routes/chairRouter.js'
+import commentRouter from '../routes/commentRouter.js'
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/v1/users', userRouter)
 app.use('/api/v1/buy', buyRouter)
 app.use('/api/v1/booking', bookingsRouter)
 app.use('/api/v1/menu', menuRouter)
+app.use('/api/v1/comments', commentRouter)
 app.use('/api/v1/item', itemRouter)
 app.use('/api/v1/stores', storeRouter)
 app.use('/api/v1/bookings', bookingRouter)

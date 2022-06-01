@@ -82,6 +82,13 @@ const adminSchema = new mongoose.Schema(
             amount: { type: Number },
             reserved: { type: Number },
           }
+        ],
+        comments: [
+          {
+            text: {type: String},
+            photo: { type: String },
+            createdAt: { type: Date, default: Date.now() },
+          }
         ]
       },
     ],
