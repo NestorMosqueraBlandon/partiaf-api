@@ -74,6 +74,7 @@ export const signin = async (req, res) => {
         lastname: user.lastname,
         username: user.username,
         email: user.email,
+        balance: user.balance,
         mobile: user.mobile,
         image: user.image,
         token: generateToken(user),

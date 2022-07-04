@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String },
     password: { type: String },
     age: { type: Number },
+    balance: { type: Number },
     mobile: { type: Number },
     address: { type: String },
     image: {type: String},
