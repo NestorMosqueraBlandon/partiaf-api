@@ -55,7 +55,7 @@ export const updateAdmin = async (req, res) => {
   });
 };
 
-export const findOneUser = async (req, red) => {
+export const findOneUser = async (req, res) => {
   const user = await User.findById(req.params.id);
   res.send(user);
 };
