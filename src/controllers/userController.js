@@ -79,6 +79,7 @@ export const signin = async (req, res) => {
         mobile: user.mobile,
         image: user.image,
         token: generateToken(user),
+        events: user.events,
       });
       return;
     } else {
