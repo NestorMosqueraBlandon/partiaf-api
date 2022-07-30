@@ -12,7 +12,7 @@ export const createAdmin = async (req, res) => {
     age: req.body.age,
     mobile: req.body.mobile,
     address: req.body.address,
-    image: req.body.image
+    image: req.body.image,
   });
   const createdAdmin = await admin.save();
 
@@ -27,6 +27,7 @@ export const createAdmin = async (req, res) => {
     mobile: createdAdmin.mobile,
     address: createdAdmin.address,
     image: createdAdmin.image,
+    events: createdAdmin.events,
     token: generateToken(admin),
   });
 };

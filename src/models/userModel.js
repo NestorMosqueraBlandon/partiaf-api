@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema(
     mobile: { type: Number },
     address: { type: String },
     image: {type: String},
-    gender: {type: String}
+    gender: {type: String},
+    events: {type: Number},
     
   },
   {

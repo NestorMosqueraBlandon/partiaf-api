@@ -4,7 +4,7 @@ import { generateToken } from "../utils/utils.js";
 
 export const createUser = async (req, res) => {
   
-  const user = new User(req.body.user);
+  const user = new User({...req.body.user, events: 0 });
   const createdUser = await user.save();
 
   console.log("LO QUE ENVIO", createdUser)
@@ -17,6 +17,7 @@ export const createUser = async (req, res) => {
     balance: 20000,
     image: createdUser.image,
     password: createdUser.password,
+    events: 0,
     token: generateToken(user),
   });
 };
