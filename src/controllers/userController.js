@@ -55,11 +55,9 @@ export const updateAdmin = async (req, res) => {
   });
 };
 
-export const findOneAdmin = async (req, red) => {
-  const admin = await Admin.findById(req.params.id);
-  res.json({
-    message: "Admin were deleted successsfully",
-  });
+export const findOneUser = async (req, red) => {
+  const user = await User.findById(req.params.id);
+  res.json(user);
 };
 
 export const signin = async (req, res) => {
