@@ -57,7 +57,7 @@ export const updateAdmin = async (req, res) => {
 
 export const findOneUser = async (req, red) => {
   const user = await User.findById(req.params.id);
-  res.json(user);
+  res.send(user);
 };
 
 export const signin = async (req, res) => {
