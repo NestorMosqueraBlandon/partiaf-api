@@ -18,6 +18,9 @@ export const createUser = async (req, res) => {
     image: createdUser.image,
     password: createdUser.password,
     events: 0,
+    wishlist: [],
+    followers:[],
+    following:[],
     token: generateToken(user),
   });
 };
@@ -70,6 +73,17 @@ export const addToWishlist = async (req, res) => {
    res.send(user);
 }
 
+export const findWishlist = async (req, res) => {
+  const user = await User.findById(req.body.id);
+
+  if(user){
+    const wishlist = await user.wishlist;
+    user.save();
+  }
+   res.send(user);
+}
+
+
 export const signin = async (req, res) => {
   console.log(req.body)
   const user = await User.findOne({ username: req.body.username });
@@ -89,7 +103,9 @@ export const signin = async (req, res) => {
         image: user.image,
         token: generateToken(user),
         events: user.events,
-        wishlist: user.wishlist,
+        wishlist: user.wishlist || [],
+        followers: user.followers || [],
+        following: user.following || [],
       });
       return;
     } else {
