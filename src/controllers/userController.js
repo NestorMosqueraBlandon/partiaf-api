@@ -67,7 +67,7 @@ export const addToWishlist = async (req, res) => {
     user.wishlist.unshift({store: req.body.store});
     user.save();
   }
-   res.send(200);
+   res.send(user);
 }
 
 export const signin = async (req, res) => {
