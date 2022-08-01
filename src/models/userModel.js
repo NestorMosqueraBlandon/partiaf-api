@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
     image: {type: String},
     gender: {type: String},
     events: {type: Number},
-    
+    wishlist: [{store: String}],
   },
   {
     timestamps: true,

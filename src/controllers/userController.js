@@ -60,6 +60,16 @@ export const findOneUser = async (req, res) => {
   res.send(user);
 };
 
+export const addToWishlist = async (req, res) => {
+  const user = await User.findById(req.body.id);
+
+  if(user){
+    user.wishlist.push(req.body.store);
+    user.save();
+  }
+   res.send(200);
+}
+
 export const signin = async (req, res) => {
   console.log(req.body)
   const user = await User.findOne({ username: req.body.username });
