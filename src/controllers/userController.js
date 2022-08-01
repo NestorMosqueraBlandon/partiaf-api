@@ -64,7 +64,7 @@ export const addToWishlist = async (req, res) => {
   const user = await User.findById(req.body.id);
 
   if(user){
-    user.wishlist.push(req.body.store);
+    user.wishlist.unshift({store: req.body.store});
     user.save();
   }
    res.send(200);
