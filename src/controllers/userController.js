@@ -4,7 +4,7 @@ import { generateToken } from "../utils/utils.js";
 
 export const createUser = async (req, res) => {
   
-  const user = new User({...req.body.user, events: 0 });
+  const user = new User({...req.body.user, events: 0, balance: 100000, followers: [], following: []});
   const createdUser = await user.save();
 
   console.log("LO QUE ENVIO", createdUser)
@@ -14,13 +14,13 @@ export const createUser = async (req, res) => {
     email: createdUser.email,
     username: createdUser.username,
     mobile: createdUser.mobile,
-    balance: 20000,
+    balance: createdUser.balance,
     image: createdUser.image,
     password: createdUser.password,
     events: 0,
-    wishlist: [],
-    followers:[],
-    following:[],
+    wishlist: createdUser.wishlist,
+    followers: createdUser.followers,
+    following: createdUser.following,
     token: generateToken(user),
   });
 };
