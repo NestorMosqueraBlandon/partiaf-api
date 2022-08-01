@@ -89,6 +89,7 @@ export const signin = async (req, res) => {
         image: user.image,
         token: generateToken(user),
         events: user.events,
+        wishlist: user.wishlist,
       });
       return;
     } else {
