@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     wishlist: [{store: String}],
     followers: [{store: String}],
     following: [{store: String}],
-
+    pin: {type: Number},
   },
   {
     timestamps: true,
